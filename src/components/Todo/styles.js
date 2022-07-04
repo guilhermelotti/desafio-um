@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Title = styled.p`
-  font-size: 1.6rem;
+  font-size: 2rem;
+  text-decoration: ${({ isComplete }) => isComplete && "line-through"};
 `;
 
 export const UpdateTodo = styled.span`

@@ -15,6 +15,16 @@ export function Todo({ todo, setTodos, todos }) {
     setStorageItem("todoItems", newTodoArray);
   }
 
+  function handleToggleTodoCompletion(id) {
+    const todoIndex = todos.findIndex((todo) => todo.id === id);
+
+    let newTodosArray = [...todos];
+    newTodosArray[todoIndex].isComplete = !newTodosArray[todoIndex].isComplete;
+
+    setTodos(newTodosArray);
+    setStorageItem("todoItems", newTodosArray);
+  }
+
   const handleEditTodo = () => setIsInEditMode((prevState) => !prevState);
 
   const updateTodo = (oldTodo, updatedTodoTitle) => {
@@ -42,7 +52,18 @@ export function Todo({ todo, setTodos, todos }) {
 
   return (
     <>
-      {!isInEditMode && <S.Title>{todo.title}</S.Title>}
+      <label>
+        <input
+          type="checkbox"
+          readOnly
+          checked={todo.isComplete}
+          onClick={() => handleToggleTodoCompletion(todo.id)}
+        />
+        <span></span>
+      </label>
+      {!isInEditMode && (
+        <S.Title isComplete={todo.isComplete}>{todo.title}</S.Title>
+      )}
       {isInEditMode && (
         <S.UpdateTodo>
           <S.UpdateInput

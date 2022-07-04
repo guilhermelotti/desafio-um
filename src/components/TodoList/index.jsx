@@ -19,6 +19,7 @@ export function TodoList() {
       const newTodo = {
         id: uuid(),
         title: `${newTodoTitle}`,
+        isComplete: false,
       };
 
       const newTodos = [...todos, newTodo];

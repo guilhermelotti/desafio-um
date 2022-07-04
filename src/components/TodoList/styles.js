@@ -61,7 +61,7 @@ export const InputGroup = styled.div`
   }
 `;
 
-export const ListItem = styled.ul`
+export const ListItem = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
